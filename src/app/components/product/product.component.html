@@ -1,0 +1,31 @@
+<div class="w-[280px] flex flex-col gap-1 flex-wrap">
+  <img class="w-full bg-gray-400 rounded-2xl object-contain" src="{{ product.image }}" alt="Product Thumbnail">
+  <h2 class="text-3xl font-bold">{{ product.name | truncateName: 16 }}</h2>
+
+  <div class="flex gap-1">
+    <p>Price: </p>
+    <p>{{ product.price | price }}</p>
+  </div>
+  <p-rating [(ngModel)]="product.rating" [readonly]="true" [cancel]="false" />
+
+  <div class="flex gap-2">
+    <button
+      type="button"
+      pButton
+      icon="pi pi-pencil"
+      (click)="editProduct()"
+      label="Edit"
+    ></button>
+    <button
+      type="button"
+      class="p-button-danger"
+      pButton
+      icon="pi pi-trash"
+      (click)="confirmDelete()"
+      label="Delete"
+      #deleteButton
+    ></button>
+  </div>
+</div>
+
+<p-confirmPopup></p-confirmPopup>

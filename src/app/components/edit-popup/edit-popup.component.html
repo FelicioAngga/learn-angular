@@ -1,0 +1,23 @@
+<p-dialog [header]="header" [visible]="display" [modal]="true" [closable]="false">
+  <form class="flex flex-col gap-2" [formGroup]="productForm">
+    <div class="flex gap-5">
+      <p class="my-auto">Name:</p>
+      <input class="p-2 border" type="text" formControlName="name">
+    </div>
+    <div class="flex gap-5">
+      <p class="my-auto">Price:</p>
+      <input class="p-2 border" type="text" formControlName="price">
+    </div>
+    <div class="flex gap-5">
+      <p class="my-auto">Image:</p>
+      <input class="p-2 border" type="text" formControlName="image">
+    </div>
+
+    <p-rating formControlName="rating" [cancel]="false" />
+  </form>
+
+  <p-footer>
+    <button type="button" pButton icon="pi pi-check" (click)="onConfirm()" [class.disabled]="!productForm.valid" label="Confirm"></button>
+    <button type="button" pButton class="p-button-danger" icon="pi pi-times" (click)="onCancel()" label="Cancel"></button>
+  </p-footer>
+</p-dialog>
